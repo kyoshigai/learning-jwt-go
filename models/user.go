@@ -1,7 +1,6 @@
 package models
 
 import (
-	"entgo.io/ent/entc/integration/gremlin/ent/user"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
@@ -19,12 +18,12 @@ func (u *User) HashPassword(password string) error {
 	if err != nil {
 		return err
 	}
-	user.Password = string(bytes)
+	u.Password = string(bytes)
 	return nil
 }
 
 func (u *User) CheckPassword(providedPassword string) error {
-	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(providedPassword))
+	err := bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(providedPassword))
 	if err != nil {
 		return err
 	}

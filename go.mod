@@ -1,4 +1,4 @@
-module github.com/k-yoshigai/learning-jwt-go
+module github.com/kyoshigai/learning-jwt-go
 
 go 1.18
 
